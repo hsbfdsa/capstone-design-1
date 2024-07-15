@@ -1,0 +1,34 @@
+{
+  "intent": {
+    "id": "boiyihk6ien9ihd6nba2rxgg",
+    "name": "블록 이름"
+  },
+  "userRequest": {
+    "timezone": "Asia/Seoul",
+    "params": {
+      "ignoreMe": "true"
+    },
+    "block": {
+      "id": "boiyihk6ien9ihd6nba2rxgg",
+      "name": "블록 이름"
+    },
+    "utterance": "안녕하세요.",
+    "lang": null,
+    "user": {
+      "id": "108485",
+      "type": "accountId",
+      "properties": {}
+    }
+  },
+  "bot": {
+    "id": "6528ee3682d33246ee012f46",
+    "name": "봇 이름"
+  },
+  "action": {
+    "name": "5vbggt19ez",
+    "clientExtra": null,
+    "params": {},
+    "id": "a7pt70ha6wiiidpwmrhigiof",
+    "detailParams": {}
+  }
+}
