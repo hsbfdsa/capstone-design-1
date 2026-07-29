@@ -1,7 +1,7 @@
 # 🏫 AI-based Parent Complaint Response Chatbot
 
 > 서울과학기술대학교 인공지능응용학과  
-> Capstone Design II (2023)
+> Capstone Design I (2023)
 
 교사가 직접 응대해야 하는 학부모 민원의 부담을 줄이기 위해 **LLM 기반 민원 처리 챗봇**을 개발한 프로젝트입니다.
 
