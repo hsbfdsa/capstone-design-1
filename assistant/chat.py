@@ -9,7 +9,7 @@ class Chatbot:
 
     def __init__(self):
         self.client = OpenAI(
-            api_key="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",
+            api_key="OPEN_API_KEY",
             # organization=os.getenv('OPENAI_ORGANIZATION')
         )
         self.model = "gpt-3.5-turbo"
