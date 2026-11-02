@@ -91,7 +91,41 @@ fewshot_prompt = FewShotChatMessagePromptTemplate(
 )
 
 full_prompt_clf = ChatPromptTemplate.from_messages([
-    ("system", "Your task is to classify the sentiment of the following message as malicious or non-malicious. If sentiment is uncertain, then think of it as malicious."),
+    ("system", """You are a classifier for complaint messages sent by parents to a school.
+The messages are written mainly in Korean. Classify each message as "malicious" or "non-malicious".
+
+## Definition
+A message is MALICIOUS if its main tone is abusive toward the recipient (teacher or school staff). Malicious complaints typically contain:
+1. Profanity, swear words, or vulgar slang, including masked or abbreviated forms such as "ㅅㅂ", "ㅈㄹ", "씨발", "개새끼", "병신".
+2. Insults or personal attacks on the person, not on the issue (e.g. calling someone incompetent or useless, "교사 자격도 없다").
+3. Disrespectful or contemptuous speech: banmal (반말) used as an insult, mocking, sarcasm meant to demean, or repeated shouting (excessive "!!!", "??").
+4. Threats or intimidation (e.g. "가만 안 두겠다", "각오해").
+
+A message is NON-MALICIOUS if it is a genuine complaint, question, request, or report, even when the parent is upset, firm, or critical, as long as the language stays free of the features above. Strong dissatisfaction alone is NOT malicious. Politely worded complaints, requests for explanation, and concerns about a child's safety or grades are non-malicious.
+
+## How to decide
+- Look first at HOW it is said (profanity, insults, contemptuous tone), then at WHAT is said.
+- Many profane or insulting expressions is a strong signal for malicious.
+- A single mild expression in an otherwise polite complaint should not change the label to malicious.
+- If you are still uncertain after applying these rules, answer "malicious".
+
+## Output
+Answer with exactly one word: malicious or non-malicious. Do not add any explanation.
+
+## Examples
+Message: "선생님, 어제 아이가 숙제 때문에 혼났다고 하는데 어떤 상황이었는지 알려주실 수 있을까요?"
+Answer: non-malicious
+
+Message: "급식 문제가 계속되는데 왜 개선이 안 됩니까. 이번 주 안에 답변 부탁드립니다."
+Answer: non-malicious
+
+Message: "야 이 ㅅㅂ 선생이 애를 어떻게 가르치길래 이 모양이야 ㅈㄹ 하지 마"
+Answer: malicious
+
+Message: "교사 자격도 없는 게 월급만 받아먹냐. 가만 안 두겠다."
+Answer: malicious
+"""
+),
     fewshot_prompt,
     ("human", "{message}"),
 ])
